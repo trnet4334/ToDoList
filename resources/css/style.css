@@ -250,3 +250,21 @@ ul.todo#completed:not(:empty):before {
     left: 50%;
     margin: 0 0 0 -75px;
 }
+
+ul.todo#completed:empty:after {
+    content: 'Hurry up! You haven\'t completed any tasks yet.';
+}
+
+ul.todo#todo:empty:after {
+    content: 'Awesome! You have complete everything.';
+    margin: 15px 0 0 0;
+}
+
+ul.todo#todo:after,
+ul.todo#completed:after {
+    width: 100%;
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #aaa;
+}

@@ -10,8 +10,16 @@
     <!-- CSS stylesheet -->
     <link rel="stylesheet" type="text/css" href="resources/css/reset.css"/>
     <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
+    <link rel="stylesheet" type="text/css" href="resources/css/new_style.css"/>
 </head>
 <body>
+    
+    <div id="topnav">
+      <a class="btn active" id=todoAll href="#">Task</a
+     ><a class="btn" id=todoUndone href="#">Processing</a
+     ><a class="btn" id=todoDone href="#">Completed</a>
+    </div>
+    
     <header>
         <input type="text" placeholder="Enter an activity:" id="item">
         <button id="add">
@@ -25,8 +33,6 @@
         <!-- Completed tasks -->
         <ul class="todo" id="completed"></ul>
     </div>
-
-
 
     <!-- Script file -->
     <script src="resources/js/main.js" type="text/javascript"></script>

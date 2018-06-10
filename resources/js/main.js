@@ -29,6 +29,34 @@ document.getElementById('item').addEventListener('keydown', function(e){
     }
 });
 
+
+// Get the container element
+var topnav = document.getElementById("topnav");
+
+// Get all buttons with class="btn" inside the container
+var btns = topnav.getElementsByClassName("btn");
+
+// Loop through the buttons and add the active class to the current/clicked button
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+      
+    if(this.id === 'todoAll') {
+        document.getElementById('todo').style.display = 'block';
+        document.getElementById('completed').style.display = 'block';
+    } else if(this.id === 'todoUndone') {
+        document.getElementById('todo').style.display = 'block';
+        document.getElementById('completed').style.display = 'none';
+    } else {
+        document.getElementById('todo').style.display = 'none';
+        document.getElementById('completed').style.display = 'block';
+    }
+      
+  });
+}
+
 function addItem (value) {
     addItem(value);
     document.getElementById('item').value = '';

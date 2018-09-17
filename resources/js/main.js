@@ -1,4 +1,3 @@
-
 var data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem('todoList')):{
     todo: [],
     completed: []
@@ -28,7 +27,6 @@ document.getElementById('item').addEventListener('keydown', function(e){
         addItem(value);
     }
 });
-
 
 // Get the container element
 var topnav = document.getElementById("topnav");
@@ -97,7 +95,6 @@ function removeItem() {
     }
     dataObjectUpdated();
 
-
     parent.removeChild(item);
 }
 
@@ -114,7 +111,6 @@ function completeItem() {
         data.completed.splice(data.completed.indexOf(value), 1);
         data.todo.push(value);
     }
-
 
     // Check out the item should be added to completed or not
     let target = (id === 'todo') ? document.getElementById('completed'):document.getElementById('todo');

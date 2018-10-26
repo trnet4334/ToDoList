@@ -252,12 +252,14 @@ ul.todo#completed:not(:empty):before {
 }
 
 ul.todo#completed:empty:after {
-    content: 'Hurry up! You haven\'t completed any tasks yet.';
+    color: white;
+    font-size: 18px;
 }
 
 ul.todo#todo:empty:after {
-    content: 'Awesome! You have complete everything.';
     margin: 15px 0 0 0;
+    color: white;
+    font-size: 18px;
 }
 
 ul.todo#todo:after,

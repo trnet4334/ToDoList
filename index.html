@@ -9,7 +9,8 @@
     <!-- Roboto font embed -->
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
     <!-- CSS stylesheet -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="./src/semantic/dist/semantic.min.css">
+    <link rel="stylesheet" href="./src/style.css">
 </head>
 
 <body>
@@ -25,7 +26,7 @@
 
         <!-- Navbar for categorizing status of task -->
         <div id="topnav">
-            <a class="btn active" id=todoAll href="#">Task</a
+            <a class="btn active" id=todoAll href="#">All Task</a
             ><a class="btn" id=todoUndone href="#">Processing</a
         ><a class="btn" id=todoDone href="#">Completed</a>
         </div>
@@ -41,6 +42,10 @@
 </div>
 
 <!-- Script file -->
-<script src="resources/js/main.js" type="text/javascript"></script>
+<script src="./src/js/index.js" type="text/javascript"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+<script src="./src/semantic/dist/semantic.min.js"></script>
 </body>
 </html>

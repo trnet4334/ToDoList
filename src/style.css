@@ -7,12 +7,80 @@ body, input, button {
 body {
     /*     background: #edf0f1; */
     padding: 80px 0 0 0;
-    background-image: linear-gradient(to bottom, rgba(255, 255, 0, 0.4), rgba(0, 0, 255, 0.4)),
-    url("https://images.pexels.com/photos/1329064/pexels-photo-1329064.jpeg?cs=srgb&dl=article-beverage-break-1329064.jpg&fm=jpg");
+}
+
+/* reset */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: baseline
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+    display: block
+}
+
+body, html {
+    width: 100%;
+    height: 100%
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: none;
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+}
+
+ol, ul {
+    list-style: none
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #ccc
+}
+
+blockquote, q {
+    quotes: none
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+    content: '';
+    content: none
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box
+}
+
+html, input, select, textarea, button, a {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
 
 .noFill {
     fill: none;
+}
+
+.todo-header {
+
+}
+
+.todo-header h2 {
+    display: inline-flex;
 }
 
 .app {
@@ -28,6 +96,16 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.todo-menu {
+    margin-top: 20px;
+}
+
+.ui.vertical.menu .item>i.icon.left {
+    float: none;
+    margin-right: 5px;
+    margin-left: 0;
 }
 
 header {
@@ -109,36 +187,52 @@ header button svg .fill {
     fill: #25b99a;
 }
 
-.navBlock {
-    position: relative;
-    width: 60%;
-    top: 8%;
-    right: 20%;
-    left: 20%;
-    border-radius: 0px 0px 20px 20px;
+.cards-header {
+    margin-top: 5vh;
+    margin-bottom: 5vh;
 }
 
-#todoAll, #todoUndone, #todoDone {
-    font-weight: 800;
-    font-size: 22px;
+.cards-flex {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
 }
 
-.navBlock a {
-    width: 30%;
-    border-radius: 10px 10px;
+.ui.container>.ui.container.cards-flex {
+    display: inline-flex;
 }
 
-.container {
-    width: inherit;
-    /*    float: left;*/
-    padding: 55px 0 0 0;
-    position: relative;
-    top: 8%;
+.ui.container>.container.todo-card {
+    height: 72vh;
+    width: 30vw;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid gray;
+    box-shadow: 2px 2px #2e3032;
 }
 
-ul.todo {
-    /*    width: 100%;*/
-    /*    margin: 0 auto;*/
+.content>.extra.content {
+    margin: 10px;
+}
+
+.content h2 {
+    line-height: 2em;
+}
+
+.content h3 {
+    line-height: 2em;
+}
+
+.list-item-style {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid dimgrey;
+    border-radius: 10px;
+    margin: 3px;
+    padding: 3px 5px 3px 5px;
+    font-size: 1.3em;
+    cursor: pointer;
 }
 
 ul.todo li {
@@ -157,82 +251,6 @@ ul.todo li {
     box-shadow: 0px 1px 2px rgba(44, 62, 80, 0.15);
     margin: 10px auto;
     padding: 14px 100px 14px 14px;
-}
-
-/*
-ul.todo li:last-of-type {
-    margin: 0;
-}
-*/
-
-ul.todo li .buttons {
-    width: 100px;
-    height: 50px;
-
-    position: absolute;
-    top: 0;
-    right: 0;
-}
-
-ul.todo li .buttons button {
-    width: 50px;
-    height: 50px;
-    float: left;
-    background: none;
-    position: relative;
-    border: 0px;
-    box-shadow: none;
-    outline: none;
-    cursor: pointer;
-
-    -ms-appearance: none;
-    -o-appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-}
-
-ul.todo li .buttons button:last-of-type:before {
-    content: '';
-    width: 1px;
-    height: 30px;
-    position: absolute;
-    top: 10px;
-    left: 0;
-    background: #edf0f1;
-}
-
-ul.todo li.buttons button svg {
-    width: 22px;
-    height: 22px;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -11px 0 0 -11px;
-}
-
-ul.todo li .buttons button svg .fill {
-    -webkit-transition: fill 0.2s ease;
-    -moz-transition: fill 0.2s ease;
-    -ms-transition: fill 0.2s ease;
-    -o-transition: fill 0.2s ease;
-    transition: fill 0.2s ease;
-}
-
-ul.todo li .buttons button.remove svg .fill {
-    fill: #c0cecb;
-}
-
-ul.todo li .buttons button.remove:hover svg .fill {
-    fill: #e85656;
-}
-
-ul.todo li .buttons button.complete svg .fill {
-    fill: #25b99a;
-}
-
-ul.todo li .buttons button.complete:hover svg .fill {
-    fill: rgba(37, 185, 154, 0.5);
 }
 
 ul.todo#completed:not(:empty) {
@@ -271,91 +289,12 @@ ul.todo#completed:after {
     color: #aaa;
 }
 
-#topnav {
-    overflow: hidden;
-    text-align: center;
-    background-color: #333;
-    width: inherit;
+
+#user__message-image {
+    width: -webkit-fill-available;
+    margin: 20px;
 }
 
-#topnav a {
-    display: inline-block;
-    color: #f2f2f2;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 17px;
-}
-
-#topnav a:hover {
-    background-color: #ddd;
-    color: black;
-}
-
-#topnav a.active {
-    background-color: #4CAF50;
-    color: white;
-}
-
-
-/* reset */
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    vertical-align: baseline
-}
-
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-    display: block
-}
-
-body, html {
-    width: 100%;
-    height: 100%
-}
-
-body {
-    -webkit-font-smoothing: antialiased;
-    -moz-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: none;
-    margin: 0;
-    padding: 0;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
-}
-
-ol, ul {
-    list-style: none
-}
-
-hr {
-    border: 0;
-    height: 1px;
-    background: #ccc
-}
-
-blockquote, q {
-    quotes: none
-}
-
-blockquote:before, blockquote:after, q:before, q:after {
-    content: '';
-    content: none
-}
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    box-sizing: border-box
-}
-
-html, input, select, textarea, button, a {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+#user__image-section>h4 {
+ margin: 15px;
 }

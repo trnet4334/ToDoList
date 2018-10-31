@@ -12,7 +12,6 @@ let listNav = document.getElementById("listNavbar");
 // Get all buttons with class="list-navbar-item" inside the container
 let navItem = listNav.getElementsByClassName("list-navbar-item");
 
-
 // Loop through the buttons to the current/clicked button
 for (let i = 0; i < navItem.length; i++) {
     navItem[i].addEventListener("click", function() {

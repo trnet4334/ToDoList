@@ -102,7 +102,7 @@ html, input, select, textarea, button, a {
     margin-top: 20px;
 }
 
-.ui.vertical.menu .item>i.icon.left {
+.ui.vertical.menu .item > i.icon.left {
     float: none;
     margin-right: 5px;
     margin-left: 0;
@@ -198,11 +198,11 @@ header button svg .fill {
     flex-direction: row;
 }
 
-.ui.container>.ui.container.cards-flex {
+.ui.container > .ui.container.cards-flex {
     display: inline-flex;
 }
 
-.ui.container>.container.todo-card {
+.ui.container > .container.todo-card {
     height: 72vh;
     width: 30vw;
     padding: 10px;
@@ -211,7 +211,7 @@ header button svg .fill {
     box-shadow: 2px 2px #2e3032;
 }
 
-.content>.extra.content {
+.content > .extra.content {
     margin: 10px;
 }
 
@@ -289,12 +289,21 @@ ul.todo#completed:after {
     color: #aaa;
 }
 
-
 #user__message-image {
     width: -webkit-fill-available;
     margin: 20px;
+    border-radius: 50%;
+    border: 5px solid darkblue;
 }
 
-#user__image-section>h4 {
- margin: 15px;
+#user__image-section > h4 {
+    margin: 15px;
+    overflow: hidden;
+    font-style: italic;
+}
+
+.right {
+    position: absolute;
+    right: 10px;
+    margin: 20px;
 }

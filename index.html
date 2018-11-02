@@ -19,18 +19,134 @@
 
 <body>
 <div style="display: flex; flex-direction: column;">
-    <div class="ui header">
-        <a href="./todoList.html" class="right" style="cursor: pointer; font-size: 24px">
-            <span>SIGN IN</span>
+    <div class="ui segment"
+         style=" width: 100vw; position: fixed; display: flex; align-items: center;">
+        <i class="rocket red icon big" style="margin-left: 10vw;"></i>
+        <a href="./index.html"
+           style="font-family: 'Roboto', sans-serif; color: black; font-size: 24px;cursor: pointer; font-weight: bolder;">
+            AwesomeTask
         </a>
+        <!--<a href="./todoList.html" class="right" style="cursor: pointer; font-size: 24px;">-->
+        <!--LOG IN-->
+        <!--</a>-->
+    </div>
+    <div style="margin-top: 25vh; margin-bottom: 25vh;" class="flex-align-center">
+        <h1 style="font-style: italic; font-size: 48px;"
+            class="animated tada delay-1s">The greatest tool in the world to manage your workflow</h1>
+        <h2 style="line-height: 18vh; font-size: 2.5em" id="brandSubtitle"></h2>
+        <button class="ui primary button" style="border-radius: 35px;">
+            <a href="./todoList.html" style="color: white; font-size: 20px;">Get Started</a>
+        </button>
     </div>
 
-
-    <div>
-        <h1 style="text-align: center; font-size: 72px; margin-top: 40vh;" class="animated tada delay-1s">AwesomeTask</h1>
-        <h2 style="text-align: center; font-style: italic;">Greatest tool in the world to manage your workflow</h2>
+    <!-- Product features introduction section -->
+    <div style="width: 100vw; height: 80vh; background-color: lightgrey;">
+        <div class="flex__product-introduction">
+            <div style="width: 22.5vw;" id="test" onscroll="Animation();">
+                <h1 style="font-size: 2.2em; font-weight: 900;">A to-do list app which is more than just a to-do list
+                    app</h1>
+                <br>
+                <p style="font-size: 1.3em;">With AwesomeTask, make your task list as you want. Simpler or detailed.
+                    Getting your team hooked is easy and
+                    fast.</p>
+            </div>
+            <img src="https://source.unsplash.com/PtS3B82UMbE/1600x900" alt=" " style="width: 40vw; margin-left: 70px;">
+        </div>
     </div>
+    <div style="width: 100vw; height: 70vh;">
+        <h1 style="text-align: center; margin-top: 10vh; font-size: 3.2em;">Explore unique features with
+            AwesomeTask</h1>
+        <div class="ui centered grid" style="margin-top: 5vh;">
+            <div class="three wide column" style="margin: 25px;">
+                <i class="icon edit blue large"></i>
+                <h3 style="font-size: 1.6em; margin-top: 10px; margin-bottom: 10px;">Put all details you want in the list</h3>
+                <p style="font-size: 1.3em; color: gray;">Include subject, time, location, descriptions, notes with your tasks to make it clear.</p>
+            </div>
+            <div class="three wide column" style="margin: 25px;">
+                <i class="icon bell red large"></i>
+                <h3 style="font-size: 1.6em; margin-top: 10px; margin-bottom: 10px;">Set priorities to each upcoming work</h3>
+                <p style="font-size: 1.3em; color: gray;">Set up priority to each list in the beginning and get notified when time approaching.</p>
+            </div>
+            <div class="three wide column" style="margin: 25px;">
+                <i class="icon sliders horizontal grey large"></i>
+                <h3 style="font-size: 1.6em; margin-top: 10px; margin-bottom: 10px;">Customize task list category</h3>
+                <p style="font-size: 1.3em; color: gray;">Dynamically add or remove list category, so you can easily find the list you want.</p>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100vw; height: 80vh; background-color: lightgrey;">
+        <div class="flex__product-introduction">
+            <img src="https://source.unsplash.com/6D8bfS0sU7o/1600x900" alt=" "
+                 style="width: 40vw; margin-right: 70px;">
+            <div style="width: 22.5vw;">
+                <h1 style="font-size: 2.2em; font-weight: 900;">Customize your workflow and increase
+                    productivity</h1>
+                <br>
+                <p style="font-size: 1.3em;">AwesomeTask makes all tasks easy to track. Manage any workflow or process
+                    will be flexible to address any challenges from scratch.</p>
+            </div>
+        </div>
+    </div>
+    <div style="width: 100vw; height: 70vh;">
+        <div class="flex-align-center" style="margin: 10vh auto; width: 50vw;">
+            <h1 style="font-size: 4em; text-align: center;">Start getting news about AwesomeTask today</h1>
+            <h2 style="font-size: 2em; text-align: center; margin: 20px; color: gray;">Say goodbye to your old tools and embrace new task management app right now!</h2>
+            <div class="ui action input big" style="margin: 25px;">
+                <input type="text" placeholder="example@company.com">
+                <button class="ui button">
+                    <a href="mailto:example@example.com" style="font-size: 1.5em; font-weight: bold;">Start today!</a>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
 
+<div class="ui inverted vertical segment" style="position: relative; min-width: 100vw;">
+    <div style="margin: 4vh 10vw 4vh 10vw; display: flex; justify-content: space-around;">
+        <div class="flex-align-start">
+            <i class="rocket big red icon" style="margin-bottom: 30px;"></i>
+            <span>All Rights Reserved</span>
+            <span>© AwesomeTask</span>
+        </div>
+        <div class="flex-align-start">
+            <h3 class="header">Our product</h3>
+            <a href="/">Product</a>
+            <a href="/">Stories</a>
+            <a href="/">Pricing</a>
+        </div>
+        <div class="flex-align-start">
+            <h3 class="header">Our team</h3>
+            <a href="/">About us</a>
+            <a href="/">Contact us</a>
+            <a href="/">Careers</a>
+            <a href="/">News</a>
+            <a href="/">Blog</a>
+        </div>
+        <div class="flex-align-start">
+            <h3 class="header">Team Solution</h3>
+            <a href="/">IT Department</a>
+            <a href="/">Designers</a>
+            <a href="/">Sales</a>
+            <a href="/">HR</a>
+            <a href="/">Marketing</a>
+        </div>
+        <div class="flex-align-start">
+            <h3 class="header">Help</h3>
+            <a href="/">AwesomeTask Guides</a>
+            <a href="/">Support</a>
+            <a href="/">Awesome Community</a>
+        </div>
+    </div>
+</div>
+<!-- Footer section -->
+<div class="ui vertical footer segment"
+     style="position: absolute; background-color: grey; min-width: 100vw; height: 8vh; display: flex; align-items: center; justify-content: flex-end;">
+    <div style="margin-right: 10vw">
+        <i class="icon instagram big"></i>
+        <i class="icon linkedin big"></i>
+        <i class="icon twitter big"></i>
+        <i class="icon pinterest big"></i>
+    </div>
 </div>
 
 <!-- Script file -->

@@ -17,9 +17,11 @@
 </head>
 <body>
 <div class="todo-header ui segment">
-    <h2 class="ui header">
-        TODO LIST
-    </h2>
+    <a href="./index.html">
+        <h2 class="ui header">
+            AwesomeTask
+        </h2>
+    </a>
 </div>
 <div class="inline">
     <div class="ui secondary vertical huge compact menu todo-menu">
@@ -36,7 +38,7 @@
             <div class="header">
                 <i class="clipboard list icon left"></i>
                 MY LISTS
-                <i class="pencil alternate icon" style="float: right; cursor: pointer;" id="editList"></i>
+                <!--<i class="pencil alternate icon" style="float: right; cursor: pointer;" id="editList"></i>-->
             </div>
             <div class="menu" id="listNavbar">
                 <a class="item list-navbar-item" id="todoAll">
@@ -88,7 +90,7 @@
                 <div class="content">
                     <div class="extra content">
                         <div class="ui fluid icon input">
-                            <input type="text" id="item" placeholder="Add new todo list">
+                            <input type="text" id="item" placeholder="Add new list">
                             <div class="ui vertical animated button" id="add" tabindex="0">
                                 <div class="hidden content">ADD</div>
                                 <div class="visible content">
@@ -99,11 +101,9 @@
                     </div>
                     <h2 class="header">TODAY</h2>
                     <div id="todo-list-div">
-                        <!--<h3>Under processing</h3>-->
                         <ul id="todo"></ul>
                     </div>
                     <div id="completed-list-div" style="display: none;">
-                        <!--<h3>Completed</h3>-->
                         <ul id="completed"></ul>
                     </div>
                 </div>
@@ -113,14 +113,37 @@
                     <div class="ui horizontal selection list">
                         <div class="item" id="list-details-div">
                             <div class="content">
-                                <div class="header">LIST DETAILS</div>
+                                <div class="header" style="color: darkblue; font-size: 16px; font-style: italic;">LIST DETAILS</div>
                             </div>
                         </div>
-                        <div class="item" id="upcoming-event-div">
-                            <div class="content">
-                                <div class="header">UPCOMING EVENT</div>
-                            </div>
-                        </div>
+                        <!--<div class="item" id="upcoming-event-div">-->
+                            <!--<div class="content">-->
+                                <!--<div class="header">UPCOMING EVENT</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    </div>
+                    <div id="listDetailsContentSection">
+                        <ul class="list-details-item">
+                            <li>
+                                <h2 class="header" id="listSubject">Subject:</h2>
+                            </li>
+                            <li>
+                                <h5 id="listTime">Time:</h5>
+                            </li>
+                            <li>
+                                <h5 id="listLocation">Location:</h5>
+                            </li>
+                            <hr>
+                            <li>
+                                <h5>Details:</h5>
+                                <p id="listDetails">Example list details</p>
+                            </li>
+                            <br>
+                            <li>
+                                <h5>Notes:</h5>
+                                <p id="listNotes">Example list notes</p>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>

@@ -5,6 +5,10 @@ let data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem(
 
 renderTodoList();
 
+// TODO: Submit multiple form data into localStorage
+// 1. Including Subject, time, location, details, notes and priority tag
+// 2. Time should use moment.js and Semantic UI calender
+// 3. Priority tag should combine with time frame
 
 // User click add button to activate add function
 // If there is any text inside the message box, it will be add into todo list.
@@ -161,6 +165,23 @@ function todoListCounter() {
     todoDoneLabel.innerText = completedCount;
 };
 
+// Display list item details into new details block
+function listItemDetailsDisplay() {
+    let listItemDetails = document.querySelectorAll('.list-item-style');
+
+    listItemDetails.forEach((item) => {
+        item.addEventListener('click', function (e) {
+            // e.preventDefault();
+            let listSubject = document.getElementById('listSubject');
+            listSubject.innerText = e.currentTarget.textContent;
+            //    TODO: Add each list item content into new "LIST DETAILS" block
+        });
+    });
+}
+
+listItemDetailsDisplay();
+
+// TODO: Edit lists category (Add, remove, edit)
 
 // TODO: Counter for unread message
 // function unreadMessageCounter() {
@@ -183,3 +204,4 @@ $(function(){
         $('#message-box-modal').modal('show');
     });
 });
+

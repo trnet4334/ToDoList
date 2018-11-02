@@ -14,11 +14,11 @@ let navItem = listNav.getElementsByClassName("list-navbar-item");
 
 // Loop through the buttons to the current/clicked button
 for (let i = 0; i < navItem.length; i++) {
-    navItem[i].addEventListener("click", function() {
-        if(this.id === 'todoAll') {
+    navItem[i].addEventListener("click", function () {
+        if (this.id === 'todoAll') {
             document.getElementById('todo-list-div').style.display = 'block';
             document.getElementById('completed-list-div').style.display = 'block';
-        } else if(this.id === 'todoUndone') {
+        } else if (this.id === 'todoUndone') {
             document.getElementById('todo-list-div').style.display = 'block';
             document.getElementById('completed-list-div').style.display = 'none';
         } else {
@@ -27,4 +27,3 @@ for (let i = 0; i < navItem.length; i++) {
         }
     });
 }
-

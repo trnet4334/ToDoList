@@ -33,7 +33,7 @@ fetch(url_randomUserGenerator)
             let image = document.getElementById('user__message-image');
             // div.style.backgroundImage = `url('${x.picture.thumbnail}')`;
             image.setAttribute('src', x.picture.thumbnail);
-            let emailAddress = document.createElement('h4');
+            let emailAddress = document.getElementById('user__email-address');
             emailAddress.innerText = x.email;
             div.appendChild(emailAddress);
         })

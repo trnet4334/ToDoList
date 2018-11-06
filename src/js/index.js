@@ -10,6 +10,34 @@ renderTodoList();
 // 2. Time should use moment.js and Semantic UI calender
 // 3. Priority tag should combine with time frame
 
+// Check if the item data is valid
+const isValidItem = item => {
+    return item.name && item.value;
+};
+
+// TODO: Retrieves selected option
+const convertToJSON = items => [].reduce.call(items, (data, item) => {
+    if (isValidItem(item)){
+        data[item.name] = item.value;
+    }
+    return data;
+}, {});
+
+// Handler function for submission form data
+// @param {Event} e the submit event trigger by the user
+// @return {void}
+const handleFormSubmit = e => {
+    e.preventDefault();
+
+    const data = convertToJSON(form.items);
+
+    // For testing the result of data converting
+    // const dataContainer = document.getElementsByClassName('result')[0];
+    // dataContainer.textContent = JSON.stringify(data, null, " ");
+}
+
+// form.addEventListener('submit', handleFormSubmit);
+
 // User click add button to activate add function
 // If there is any text inside the message box, it will be add into todo list.
 document.getElementById('add').addEventListener('click', function(){
@@ -63,95 +91,122 @@ function removeItem() {
     let id = parent.id;
     let value = item.innerText;
 
-    if (id === 'todo') {
-        data.todo.splice(data.todo.indexOf(value), 1);
-    } else {
-        data.completed.splice(data.completed.indexOf(value), 1);
+    if (id === 'listBody') {
+        data.splice(data.indexOf(value), 1);
     }
+    parent.removeChild(item);
     dataObjectUpdated();
 
-    parent.removeChild(item);
     todoListCounter();
 }
 
 // Button action for completing the list item
 function completeItem() {
     let item = this.parentNode.parentNode;
-    let parent = item.parentNode;
-    let id = parent.id;
-    let value = item.innerText;
+    let status = item.querySelector('.table-list-status');
 
-    if (id === 'todo') {
-        data.todo.splice(data.todo.indexOf(value), 1);
-        data.completed.push(value);
+    if (status.textContent === 'Ongoing') {
+        item.classList.remove('ongoing-list-item');
+        item.classList.add('achieved-list-item');
+        status.classList.remove('warning');
+        status.classList.add('positive');
+        status.textContent = 'Achieved';
     } else {
-        data.completed.splice(data.completed.indexOf(value), 1);
-        data.todo.push(value);
+        item.classList.remove('achieved-list-item');
+        item.classList.add('ongoing-list-item');
+        status.classList.remove('positive');
+        status.classList.add('warning');
+        status.textContent = 'Ongoing';
     }
 
-    // Check out the item should be added to completed or not
-    if (id === 'todo') {
-        let target = document.getElementById('completed');
-        parent.removeChild(item);
-        target.insertBefore(item, target.childNodes[0]);
-        target.querySelector('.check').classList.add('green');
-    } else {
-        let target = document.getElementById('todo');
-        parent.removeChild(item);
-        target.insertBefore(item, target.childNodes[0]);
-        target.querySelector('.check').classList.remove('green');
-    }
     todoListCounter();
 }
 
-function addItemToDOM (text, completed){
-    let list = (completed) ? document.getElementById('completed'):document.getElementById('todo');
+function addItemToDOM (text){
+    let list = document.getElementById('listBody');
 
-    let item = document.createElement('li');
-    item.classList.add('list-item-style');
+    let listRow = document.createElement('tr');
+    listRow.classList.add('table-list-item', 'ongoing-list-item');
+    let listSubject = document.createElement('td');
+    listSubject.classList.add('table-list-subject', 'center', 'aligned');
+    listSubject.innerText = text;
 
-    // Input text group in the list element
-    let inputText = document.createElement('div');
+    let listStatus = document.createElement('td');
+    listStatus.classList.add('table-list-status', 'center', 'aligned', 'warning');
+    listStatus.style.fontWeight = 'bold';
+    listStatus.innerText = 'Ongoing';
 
-    let todoText = document.createElement('label');
-    todoText.innerText = text;
+    let listPriority = document.createElement('td');
+    listPriority.classList.add('center', 'aligned', 'warning');
+    listPriority.style.fontWeight = 'bold';
+    listPriority.innerText = 'Medium';
 
-    inputText.appendChild(todoText);
+    let listTime = document.createElement('td');
+    listTime.innerText ='2018-11-22';
 
-    // Button group in the list elememt
-    let buttons = document.createElement('div');
-    buttons.classList.add('buttons');
+    let listBtn = document.createElement('td');
+    listBtn.classList.add('center', 'aligned');
 
     let remove = document.createElement('button');
-    remove.classList.add('remove', 'circular', 'ui', 'icon', 'red', 'button');
+    remove.classList.add('remove', 'ui', 'icon', 'red', 'button', 'mini');
     let removeIcon = document.createElement('i');
     removeIcon.classList.add('trash', 'icon');
     remove.appendChild(removeIcon);
 
-    // Click event for removing item
     remove.addEventListener('click', removeItem);
 
     let complete = document.createElement('button');
-    complete.classList.add('complete', 'circular', 'ui', 'icon', 'button');
+    complete.classList.add('complete', 'ui', 'icon', 'button', 'mini');
     let completeIcon = document.createElement('i');
     completeIcon.classList.add('check', 'circle', 'icon');
     complete.appendChild(completeIcon);
 
-    // Click event for adding the completed item
     complete.addEventListener('click', completeItem);
 
-    buttons.appendChild(complete);
-    buttons.appendChild(remove);
-    item.appendChild(inputText);
-    item.appendChild(buttons);
+    listBtn.appendChild(complete);
+    listBtn.appendChild(remove);
+    listRow.appendChild(listSubject);
+    listRow.appendChild(listStatus);
+    listRow.appendChild(listPriority);
+    listRow.appendChild(listTime);
+    listRow.appendChild(listBtn);
 
-    list.insertBefore(item, list.childNodes[0]);
-    todoListCounter();
+    list.parentNode.insertBefore(listRow, list);
+
+    // Button group in the list elememt
+    // let buttons = document.createElement('div');
+    // buttons.classList.add('buttons');
+    //
+    // let remove = document.createElement('button');
+    // remove.classList.add('remove', 'circular', 'ui', 'icon', 'red', 'button');
+    // let removeIcon = document.createElement('i');
+    // removeIcon.classList.add('trash', 'icon');
+    // remove.appendChild(removeIcon);
+
+    // Click event for removing item
+    // remove.addEventListener('click', removeItem);
+    //
+    // let complete = document.createElement('button');
+    // complete.classList.add('complete', 'circular', 'ui', 'icon', 'button');
+    // let completeIcon = document.createElement('i');
+    // completeIcon.classList.add('check', 'circle', 'icon');
+    // complete.appendChild(completeIcon);
+
+    // Click event for adding the completed item
+    // complete.addEventListener('click', completeItem);
+    //
+    // buttons.appendChild(complete);
+    // buttons.appendChild(remove);
+    // item.appendChild(inputText);
+    // item.appendChild(buttons);
+
+    // list.insertBefore(item, list.childNodes[0]);
+    // todoListCounter();
 }
 
 function todoListCounter() {
-    let todo = document.querySelectorAll('#todo li');
-    let completed = document.querySelectorAll('#completed li');
+    let todo = document.querySelectorAll('.ongoing-list-item');
+    let completed = document.querySelectorAll('.achieved-list-item');
 
     let todoCount = todo.length;
     let completedCount = completed.length;
@@ -202,6 +257,9 @@ listItemDetailsDisplay();
 $(function(){
     $('#message-box').click(function() {
         $('#message-box-modal').modal('show');
+    });
+    $('#test').click(function() {
+        $('#list-data-modal').modal('show');
     });
 });
 

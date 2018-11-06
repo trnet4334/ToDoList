@@ -11,12 +11,13 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700" rel="stylesheet">
     <!-- CSS stylesheet -->
     <link rel="stylesheet" type="text/css" href="./src/semantic/dist/semantic.min.css">
-    <link rel="stylesheet" href="./src/style.css">
+    <link rel="stylesheet" href="./src/stylesheet/style.css">
 
     <script src="./jquery-3.3.1.min.js"></script>
 </head>
 <body>
 <div class="todo-header ui segment">
+    <i class="rocket red icon big"></i>
     <a href="./index.html">
         <h2 class="ui header">
             AwesomeTask
@@ -24,33 +25,43 @@
     </a>
 </div>
 <div class="inline">
-    <div class="ui secondary vertical huge compact menu todo-menu">
-        <a class="item" href="./index.html">
-            <i class="home icon left"></i>
-            Home
-        </a>
-        <a class="item" id="message-box">
-            <i class="facebook messenger icon left"></i>
-            Inbox message
-            <div class="ui label red" id="inbox-message-label">20</div>
-        </a>
+    <div class="ui vertical huge menu" id="todo-menu">
         <div class="item">
-            <div class="header">
-                <i class="clipboard list icon left"></i>
-                MY LISTS
-                <!--<i class="pencil alternate icon" style="float: right; cursor: pointer;" id="editList"></i>-->
+            <div class="ui input icon">
+                <input type="text" placeholder="Search list">
+                <i class="search icon"></i>
             </div>
+        </div>
+        <div class="item">
+            <div class="menu">
+                <a class="item header" href="./index.html">
+                    <i class="home icon left"></i>
+                    Home
+                </a>
+            </div>
+            <div class="menu">
+                <a class="item header" id="message-box">
+                    <i class="facebook messenger icon left"></i>
+                    Inbox message
+                    <div class="ui label red" id="inbox-message-label">20</div>
+                </a>
+            </div>
+        </div>
+        <div class="item">
+            <i class="clipboard list icon left"></i>
+            MY LISTS
+            <!--<i class="pencil alternate icon" style="float: right; cursor: pointer;" id="editList"></i>-->
             <div class="menu" id="listNavbar">
                 <a class="item list-navbar-item" id="todoAll">
                     All tasks
                     <div class="ui teal left pointing label" id="todo-all-label"></div>
                 </a>
                 <a class="item list-navbar-item" id="todoUndone">
-                    Processing
+                    Ongoing
                     <div class="ui teal left pointing label" id="todo-undone-label"></div>
                 </a>
                 <a class="item list-navbar-item" id="todoDone">
-                    Completed
+                    Achieved
                     <div class="ui teal left pointing label" id="todo-done-label"></div>
                 </a>
             </div>
@@ -74,90 +85,113 @@
             </div>
             <div class="menu">
                 <a class="item" style="color: red; font-weight: bold;">Urgent</a>
-                <a class="item" style="color: darkblue; font-weight: bold;">Normal</a>
+                <a class="item" style="color: #c0c041; font-weight: bold;">Medium</a>
+                <a class="item" style="color: #2a8b3c; font-weight: bold;">Low</a>
             </div>
         </div>
     </div>
 
-    <div class="ui container todo-list-div">
-        <div class="cards-header">
-            <h2 class="ui header">
-                Personal
-            </h2>
-        </div>
-        <div class="ui container cards-flex">
-            <div class="container todo-card">
-                <div class="content">
-                    <div class="extra content">
-                        <div class="ui fluid icon input">
-                            <input type="text" id="item" placeholder="Add new list">
-                            <div class="ui vertical animated button" id="add" tabindex="0">
-                                <div class="hidden content">ADD</div>
-                                <div class="visible content">
-                                    <i class="plus circle icon large"></i>
-                                </div>
+    <div class="ui fluid container todo-list-div">
+        <div class="ui fluid container" style="margin: 0 auto;" id="taskContentDiv">
+            <div>
+                <div>
+                    <!--<button class="ui icon circular button tiny primary" id="test">-->
+                    <!--<i class="plus icon big"></i>-->
+                    <!--</button>-->
+                    <div class="ui fluid icon input">
+                        <input type="text" id="item" placeholder="Add new list">
+                        <div class="ui vertical animated button" id="add" tabindex="0">
+                            <div class="hidden content">ADD</div>
+                            <div class="visible content">
+                                <i class="plus circle icon large"></i>
                             </div>
                         </div>
                     </div>
-                    <h2 class="header">TODAY</h2>
-                    <div id="todo-list-div">
-                        <ul id="todo"></ul>
-                    </div>
-                    <div id="completed-list-div" style="display: none;">
-                        <ul id="completed"></ul>
-                    </div>
                 </div>
-            </div>
-            <div class="container todo-card">
-                <div class="content">
-                    <div class="ui horizontal selection list">
-                        <div class="item" id="list-details-div">
-                            <div class="content">
-                                <div class="header" style="color: darkblue; font-size: 16px; font-style: italic;">LIST DETAILS</div>
-                            </div>
-                        </div>
-                        <!--<div class="item" id="upcoming-event-div">-->
-                            <!--<div class="content">-->
-                                <!--<div class="header">UPCOMING EVENT</div>-->
-                            <!--</div>-->
-                        <!--</div>-->
-                    </div>
-                    <div id="listDetailsContentSection">
-                        <ul class="list-details-item">
-                            <li>
-                                <h2 class="header" id="listSubject">Subject:</h2>
-                            </li>
-                            <li>
-                                <h5 id="listTime">Time:</h5>
-                            </li>
-                            <li>
-                                <h5 id="listLocation">Location:</h5>
-                            </li>
-                            <hr>
-                            <li>
-                                <h5>Details:</h5>
-                                <p id="listDetails">Example list details</p>
-                            </li>
-                            <br>
-                            <li>
-                                <h5>Notes:</h5>
-                                <p id="listNotes">Example list notes</p>
-                            </li>
-                        </ul>
-                    </div>
+
+                <!-- Task list table -->
+                <div id="todo-list-div">
+                    <ul id="todo"></ul>
                 </div>
+                <div id="completed-list-div" style="display: none;">
+                    <ul id="completed"></ul>
+                </div>
+
+                <!-- TODO: Need to change to table -->
+                <table class="ui sortable striped very compact celled table">
+                    <thead>
+                    <tr>
+                        <th class="Seven wide center aligned">Task</th>
+                        <th class="two wide center aligned">Status</th>
+                        <th class="sorted descending two wide center aligned">Priority</th>
+                        <th class="three wide center aligned">Time</th>
+                        <th class="two wide center aligned"></th>
+                    </tr>
+                    </thead>
+                    <tbody id="listBody"></tbody>
+                </table>
             </div>
+
         </div>
     </div>
 
+    <!-- Modal for task list data submission -->
+    <div class="ui small modal" id="list-data-modal">
+        <div class="ui attached message">
+            <div class="header">
+                Create task
+            </div>
+        </div>
+        <form class="ui form attached fluid segment">
+            <div class="field">
+                <label for="taskSubject">Subject</label>
+                <div class="field">
+                    <input type="text" id="taskSubject" name="task-subject" placeholder="Type your subject">
+                </div>
+            </div>
+            <div class="fields">
+                <div class="six wide field">
+                    <label for="taskTime">Time</label>
+                    <input id="taskTime" name="task-time" type="datetime-local" placeholder="Date/Time">
+                </div>
+                <div class="six wide field">
+                    <label for="taskLocation">Location</label>
+                    <input type="text" id="taskLocation" name="task-location">
+                </div>
+                <div class="four wide field">
+                    <label>Priority</label>
+                    <select class="ui fluid search dropdown">
+                        <option value="">--</option>
+                        <option value="1">Urgent</option>
+                        <option value="2">Medium</option>
+                        <option value="3">Low</option>
+                    </select>
+                </div>
+            </div>
+            <div class="field">
+                <label for="taskDescription">Description</label>
+                <textarea name="task-description" id="taskDescription" rows="14"></textarea>
+            </div>
+            <div class="field">
+                <label for="taskNote">Note</label>
+                <textarea name="task-note" id="taskNote" rows="5"></textarea>
+            </div>
+            <div class="ui actions right">
+                <button class="ui black deny button"> Cancel</button>
+                <button class="ui primary submit button">Done</button>
+            </div>
+        </form>
+    </div>
+    <!-- Modal for message box -->
     <div class="ui modal" id="message-box-modal">
         <!--<i class="close icon"></i>-->
-        <div class="header">
+        <div class="ui segment" style="font-weight: bold; font-size: 1.5em;">
             Inbox Message
         </div>
         <div class="image content">
             <div class="ui medium image" id="user__image-section">
                 <img src="/" alt="User photo" id="user__message-image">
+                <h4 id="user__email-address"></h4>
             </div>
             <div class="scrolling content" id="message-content"></div>
         </div>
@@ -169,12 +203,56 @@
             </div>
         </div>
     </div>
+
+    <!-- List detail modal -->
+    <div class="ui modal" id="list-detail-modal">
+        <div class="content">
+            <div class="ui horizontal selection list">
+                <div class="item" id="list-details-div">
+                    <div class="content">
+                        <div class="header" style="color: darkblue; font-size: 16px; font-style: italic;">LIST
+                            DETAILS
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="item" id="upcoming-event-div">-->
+                <!--<div class="content">-->
+                <!--<div class="header">UPCOMING EVENT</div>-->
+                <!--</div>-->
+                <!--</div>-->
+            </div>
+            <div id="listDetailsContentSection">
+                <ul class="list-details-item">
+                    <li>
+                        <h2 class="header" id="listSubject">Subject:</h2>
+                    </li>
+                    <li>
+                        <h5 id="listTime">Time:</h5>
+                    </li>
+                    <li>
+                        <h5 id="listLocation">Location:</h5>
+                    </li>
+                    <hr>
+                    <li>
+                        <h5>Details:</h5>
+                        <p id="listDetails">Example list details</p>
+                    </li>
+                    <br>
+                    <li>
+                        <h5>Notes:</h5>
+                        <p id="listNotes">Example list notes</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Script file -->
 <script src="./src/js/index.js" type="text/javascript"></script>
 <script src="./src/js/details.js" type="text/javascript"></script>
 <script src="./src/js/api.js" type="text/javascript"></script>
+<script src="./src/js/dateControl.js" type="text/javascript"></script>
 <script src="./src/semantic/dist/semantic.min.js"></script>
 </body>
 </html>

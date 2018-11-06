@@ -1,5 +1,7 @@
+@charset "UTF-8";
+
 body, input, button {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 body {
@@ -12,16 +14,16 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   margin: 0;
   padding: 0;
   border: 0;
-  vertical-align: baseline;
+  vertical-align: baseline
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
-  display: block;
+  display: block
 }
 
 body, html {
   width: 100%;
-  height: 100%;
+  height: 100%
 }
 
 body {
@@ -31,21 +33,21 @@ body {
   -webkit-text-size-adjust: none;
   margin: 0;
   padding: 0;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
 }
 
 ol, ul {
-  list-style: none;
+  list-style: none
 }
 
 hr {
   border: 0;
   height: 1px;
-  background: #ccc;
+  background: #ccc
 }
 
 blockquote, q {
-  quotes: none;
+  quotes: none
 }
 
 blockquote:before, blockquote:after, q:before, q:after {
@@ -54,7 +56,7 @@ blockquote:before, blockquote:after, q:before, q:after {
 
 table {
   border-collapse: collapse;
-  border-spacing: 0;
+  border-spacing: 0
 }
 
 * {
@@ -62,15 +64,17 @@ table {
   padding: 0;
   list-style: none;
   box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
 }
 
 html, input, select, textarea, button, a {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
 }
 
+// Keyframes
 @keyframes flipWords {
   0% {
-    content: "Productive";
+    content: 'Productive';
     color: blue;
     opacity: 1;
   }
@@ -94,6 +98,8 @@ html, input, select, textarea, button, a {
     opacity: 0;
   }
 }
+
+// Global style
 .noFill {
   fill: none;
 }
@@ -116,22 +122,29 @@ html, input, select, textarea, button, a {
   align-items: flex-start;
 }
 
-.flex-align-start > h3 {
-  font-size: 1.6em;
-}
-.flex-align-start > h3, .flex-align-start > a {
-  line-height: 2em;
-}
-.flex-align-start > a {
-  font-size: 1.2em;
-  font-weight: bold;
-}
-.flex-align-start > span {
-  font-size: 1.2em;
-  line-height: 1.5em;
-  font-weight: bold;
+.flex-align-start {
+  & > h3 {
+    font-size: 1.6em;
+  }
+  & > h3, & > a {
+    line-height: 2em;
+  }
+  & > a {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  & > span {
+    font-size: 1.2em;
+    line-height: 1.5em;
+    font-weight: bold;
+  }
 }
 
+//***************************************************************//
+// ******************  Home page style start ********************//
+//***************************************************************//
+
+// Index page product feature introduction section style
 .flex__product-introduction {
   display: flex;
   align-items: flex-start;
@@ -139,55 +152,63 @@ html, input, select, textarea, button, a {
   margin: 15vh 10vw 10vh 15vw;
 }
 
+// Brand subtitle keyframe setting
 #brandSubtitle:after {
   animation: flipWords 15s infinite alternate;
-  content: "Productive";
+  content: 'Productive';
 }
 
+//*************************************************************//
+//*******************  Home page style end ********************//
+//*************************************************************//
+
+//**************************************************************//
+// ******************  App page style start ********************//
+//**************************************************************//
+
+// Task list page header style
 .todo-header {
   display: flex;
 }
 
+// Content block style
 .inline {
   display: flex;
   align-items: flex-start;
 }
 
+// List menu style
 #todo-menu {
   margin: 0 20px 0 10px;
 }
 
-.ui.vertical.menu .item > i.icon.left {
-  float: none;
-  margin-right: 5px;
-  margin-left: 0;
-}
-.ui.container > .container#taskContentDiv {
-  padding: 20px;
-  border-radius: 5px;
-  border: 2px solid gray;
-  box-shadow: 8px 9px #2e3032;
-}
-
-.content h2 {
-  line-height: 2em;
-}
-.content h3 {
-  line-height: 2em;
+.ui {
+  // List content block style
+  &.vertical.menu .item > i.icon.left {
+    float: none;
+    margin-right: 5px;
+    margin-left: 0;
+  }
+  &.container {
+    & > .container#taskContentDiv {
+      padding: 20px;
+      border-radius: 5px;
+      border: 2px solid gray;
+      box-shadow: 8px 9px #2e3032;
+    }
+  }
 }
 
-.list-item-style {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid dimgrey;
-  border-radius: 10px;
-  margin: 3px;
-  padding: 3px 5px 3px 5px;
-  font-size: 1.3em;
-  cursor: pointer;
+.content {
+  h2 {
+    line-height: 2em;
+  }
+  h3 {
+    line-height: 2em;
+  }
 }
 
+// Table content
 .list-btn-group {
   display: flex;
   align-items: center;
@@ -196,27 +217,35 @@ html, input, select, textarea, button, a {
 
 .table-list-item {
   font-size: 1.2em;
-}
-.table-list-item .table-list-subject:hover {
-  font-style: italic;
-  text-decoration: underline;
-  text-underline: #0f0f10;
+  .table-list-subject {
+    &:hover {
+      font-style: italic;
+      text-decoration: underline;
+      text-underline: #0f0f10;
+    }
+  }
 }
 
+// Message modal content style
 #user__message-image {
   width: -webkit-fill-available;
   margin: 20px;
   border-radius: 50%;
   border: 5px solid darkblue;
-}
-#user__message-image > h4#user__email-address {
-  margin: 25px;
-  overflow: hidden;
-  font-style: italic;
-}
-
-.list-details-item h5 {
-  font-size: 18px;
+  & > h4#user__email-address {
+    margin: 25px;
+    overflow: hidden;
+    font-style: italic;
+  }
 }
 
-/*# sourceMappingURL=style.css.map */
+// List detail modal content style
+.list-details-item {
+  h5 {
+    font-size: 18px;
+  }
+}
+
+//************************************************************//
+// ******************  App page style end ********************//
+//************************************************************//

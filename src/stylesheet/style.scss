@@ -222,7 +222,11 @@ html, input, select, textarea, button, a {
       font-style: italic;
       text-decoration: underline;
       text-underline: #0f0f10;
+      cursor: pointer;
     }
+  }
+  .table-list-priority {
+    cursor: pointer;
   }
 }
 

@@ -54,15 +54,15 @@
             <div class="menu" id="listNavbar">
                 <a class="item list-navbar-item" id="todoAll">
                     All tasks
-                    <div class="ui teal left pointing label" id="todo-all-label"></div>
+                    <div class="ui teal left pointing label" id="todo-all-label">0</div>
                 </a>
                 <a class="item list-navbar-item" id="todoUndone">
                     Ongoing
-                    <div class="ui teal left pointing label" id="todo-undone-label"></div>
+                    <div class="ui teal left pointing label" id="todo-undone-label">0</div>
                 </a>
                 <a class="item list-navbar-item" id="todoDone">
                     Achieved
-                    <div class="ui teal left pointing label" id="todo-done-label"></div>
+                    <div class="ui teal left pointing label" id="todo-done-label">0</div>
                 </a>
             </div>
         </div>
@@ -84,19 +84,25 @@
                 Priorities
             </div>
             <div class="menu">
-                <a class="item" style="color: red; font-weight: bold;">Urgent</a>
-                <a class="item" style="color: #c0c041; font-weight: bold;">Medium</a>
-                <a class="item" style="color: #2a8b3c; font-weight: bold;">Low</a>
+                <a class="item menu-priority" style="color: red; font-weight: bold;" id="UrgentPriority">Urgent</a>
+                <a class="item menu-priority" style="color: #c0c041; font-weight: bold;" id="MediumPriority">Medium</a>
+                <a class="item menu-priority" style="color: #2a8b3c; font-weight: bold;" id="LowPriority">Low</a>
             </div>
         </div>
     </div>
 
     <div class="ui fluid container todo-list-div">
+        <div class="ui tabular menu">
+            <a href="#default-board" class="item active">Sample</a>
+            <a class="item">
+                <i class="icon plus"></i>
+            </a>
+        </div>
         <div class="ui fluid container" style="margin: 0 auto;" id="taskContentDiv">
-            <div>
+            <div id="default-board">
                 <div>
                     <!--<button class="ui icon circular button tiny primary" id="test">-->
-                    <!--<i class="plus icon big"></i>-->
+                        <!--<i class="plus icon big"></i>-->
                     <!--</button>-->
                     <div class="ui fluid icon input">
                         <input type="text" id="item" placeholder="Add new list">
@@ -123,20 +129,25 @@
                     <tr>
                         <th class="Seven wide center aligned">Task</th>
                         <th class="two wide center aligned">Status</th>
-                        <th class="sorted descending two wide center aligned">Priority</th>
+                        <th class="two wide center aligned">Priority</th>
                         <th class="three wide center aligned">Time</th>
-                        <th class="two wide center aligned"></th>
+                        <th class="two wide center aligned">Actions</th>
                     </tr>
                     </thead>
                     <tbody id="listBody"></tbody>
                 </table>
+                <div>
+                    <h3>*</h3>
+                    <p><strong>Priority - Click tab to change the state</strong></p>
+                    <p><strong>Actions - Status / Delete</strong></p>
+                </div>
             </div>
-
         </div>
     </div>
+    <div class="result"></div>
 
     <!-- Modal for task list data submission -->
-    <div class="ui small modal" id="list-data-modal">
+    <div class="ui small modal create-task-modal" id="list-data-modal">
         <div class="ui attached message">
             <div class="header">
                 Create task

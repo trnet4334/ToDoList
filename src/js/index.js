@@ -1,4 +1,4 @@
-let data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem('todoList')):{
+let data = (localStorage.getItem('todoList')) ? JSON.parse(localStorage.getItem('todoList')) : {
     todo: [],
     completed: []
 };
@@ -11,54 +11,55 @@ renderTodoList();
 // 3. Priority tag should combine with time frame
 
 // Check if the item data is valid
-const isValidItem = item => {
-    return item.name && item.value;
-};
+// const isValidItem = item => {
+//     return item.name && item.value;
+// };
 
 // TODO: Retrieves selected option
-const convertToJSON = items => [].reduce.call(items, (data, item) => {
-    if (isValidItem(item)){
-        data[item.name] = item.value;
-    }
-    return data;
-}, {});
+// const convertToJSON = items => [].reduce.call(items, (data, item) => {
+//     data[item.name] = item.value;
+//     return data;
+// }, {});
 
 // Handler function for submission form data
 // @param {Event} e the submit event trigger by the user
 // @return {void}
-const handleFormSubmit = e => {
-    e.preventDefault();
-
-    const data = convertToJSON(form.items);
-
-    // For testing the result of data converting
-    // const dataContainer = document.getElementsByClassName('result')[0];
-    // dataContainer.textContent = JSON.stringify(data, null, " ");
-}
+// const handleFormSubmit = e => {
+//     e.preventDefault();
+//
+//     const data = convertToJSON(taskForm.items);
+//
+//     // For testing the result of data converting
+//     const dataContainer = document.getElementsByClassName('result')[0];
+//     dataContainer.textContent = JSON.stringify(data, null, " ");
+// }
+//
+// const taskForm = document.getElementsByClassName('create-task-modal')[0];
+// taskForm.addEventListener('submit', handleFormSubmit);
 
 // form.addEventListener('submit', handleFormSubmit);
 
 // User click add button to activate add function
 // If there is any text inside the message box, it will be add into todo list.
-document.getElementById('add').addEventListener('click', function(){
-   let value = document.getElementById('item').value;
-   if (value) {
-       data.todo.push(value);
-       addItemToDOM(value);
-       document.getElementById('item').value = '';
+document.getElementById('add').addEventListener('click', function () {
+    let value = document.getElementById('item').value;
+    if (value) {
+        data.todo.push(value);
+        addItemToDOM(value);
+        document.getElementById('item').value = '';
 
-       dataObjectUpdated();
-   }
+        dataObjectUpdated();
+    }
 });
 
-document.getElementById('item').addEventListener('keydown', function(e){
+document.getElementById('item').addEventListener('keydown', function (e) {
     let value = this.value;
     if (e.code === 'Enter' && value) {
         addItem(value);
     }
 });
 
-function addItem (value) {
+function addItem(value) {
     addItem(value);
     document.getElementById('item').value = '';
 
@@ -74,12 +75,12 @@ function dataObjectUpdated() {
 function renderTodoList() {
     if (!data.todo.length && !data.completed.length)
         return;
-    for (let i = 0; i < data.todo.length; i++){
+    for (let i = 0; i < data.todo.length; i++) {
         let value = data.todo[i];
         addItemToDOM(value);
     }
 
-    for (let j = 0; j < data.completed.length; j++){
+    for (let j = 0; j < data.completed.length; j++) {
         let value = data.completed[j];
         addItemToDOM(value, true);
     }
@@ -122,7 +123,7 @@ function completeItem() {
     todoListCounter();
 }
 
-function addItemToDOM (text){
+function addItemToDOM(text) {
     let list = document.getElementById('listBody');
 
     let listRow = document.createElement('tr');
@@ -137,12 +138,13 @@ function addItemToDOM (text){
     listStatus.innerText = 'Ongoing';
 
     let listPriority = document.createElement('td');
-    listPriority.classList.add('center', 'aligned', 'warning');
+    listPriority.classList.add('center', 'aligned', 'warning', 'table-list-priority');
     listPriority.style.fontWeight = 'bold';
     listPriority.innerText = 'Medium';
 
     let listTime = document.createElement('td');
-    listTime.innerText ='2018-11-22';
+    listTime.classList.add('center', 'aligned');
+    listTime.innerText = '2018-11-22';
 
     let listBtn = document.createElement('td');
     listBtn.classList.add('center', 'aligned');
@@ -172,36 +174,6 @@ function addItemToDOM (text){
     listRow.appendChild(listBtn);
 
     list.parentNode.insertBefore(listRow, list);
-
-    // Button group in the list elememt
-    // let buttons = document.createElement('div');
-    // buttons.classList.add('buttons');
-    //
-    // let remove = document.createElement('button');
-    // remove.classList.add('remove', 'circular', 'ui', 'icon', 'red', 'button');
-    // let removeIcon = document.createElement('i');
-    // removeIcon.classList.add('trash', 'icon');
-    // remove.appendChild(removeIcon);
-
-    // Click event for removing item
-    // remove.addEventListener('click', removeItem);
-    //
-    // let complete = document.createElement('button');
-    // complete.classList.add('complete', 'circular', 'ui', 'icon', 'button');
-    // let completeIcon = document.createElement('i');
-    // completeIcon.classList.add('check', 'circle', 'icon');
-    // complete.appendChild(completeIcon);
-
-    // Click event for adding the completed item
-    // complete.addEventListener('click', completeItem);
-    //
-    // buttons.appendChild(complete);
-    // buttons.appendChild(remove);
-    // item.appendChild(inputText);
-    // item.appendChild(buttons);
-
-    // list.insertBefore(item, list.childNodes[0]);
-    // todoListCounter();
 }
 
 function todoListCounter() {
@@ -244,8 +216,8 @@ listItemDetailsDisplay();
 //     let unreadMessageCount = unreadMessage.length;
 //     console.log(unreadMessageCount);
 
-    // let unreadMessageLabel = document.getElementById('inbox-message-label');
-    // unreadMessageLabel.innerText = unreadMessageCount;
+// let unreadMessageLabel = document.getElementById('inbox-message-label');
+// unreadMessageLabel.innerText = unreadMessageCount;
 // }
 
 // TODO: Display modal use pure javaScript
@@ -254,11 +226,11 @@ listItemDetailsDisplay();
 //     messageModal.modal('show');
 // })
 
-$(function(){
-    $('#message-box').click(function() {
+$(function () {
+    $('#message-box').click(function () {
         $('#message-box-modal').modal('show');
     });
-    $('#test').click(function() {
+    $('#test').click(function () {
         $('#list-data-modal').modal('show');
     });
 });

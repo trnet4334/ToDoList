@@ -62,6 +62,7 @@ table {
   padding: 0;
   list-style: none;
   box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
 }
 
 html, input, select, textarea, button, a {
@@ -176,18 +177,6 @@ html, input, select, textarea, button, a {
   line-height: 2em;
 }
 
-.list-item-style {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid dimgrey;
-  border-radius: 10px;
-  margin: 3px;
-  padding: 3px 5px 3px 5px;
-  font-size: 1.3em;
-  cursor: pointer;
-}
-
 .list-btn-group {
   display: flex;
   align-items: center;
@@ -201,6 +190,10 @@ html, input, select, textarea, button, a {
   font-style: italic;
   text-decoration: underline;
   text-underline: #0f0f10;
+  cursor: pointer;
+}
+.table-list-item .table-list-priority {
+  cursor: pointer;
 }
 
 #user__message-image {
